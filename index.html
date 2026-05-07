@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIZ SHOPE - Premium Shopping</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Trebuchet MS', sans-serif;
+}
+
+body{
+background:#f2f2f2;
+overflow-x:hidden;
+}
+
+.login-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:linear-gradient(135deg,#000,#222,#444);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.login-box{
+background:white;
+padding:40px;
+width:350px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+text-align:center;
+}
+
+.login-box h1{
+margin-bottom:20px;
+color:#111;
+}
+
+.login-box input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
+
+.login-box button{
+width:100%;
+padding:14px;
+background:#111;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+margin-top:10px;
+}
+
+header{
+background:#111;
+color:white;
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:34px;
+font-weight:bold;
+color:#ffcc00;
+font-family:cursive;
+letter-spacing:3px;
+text-shadow:2px 2px 8px rgba(255,204,0,0.8);
+}
+
+.search-box{
+width:40%;
+}
+
+.search-box input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+outline:none;
+}
+
+.menu-container{
+position:relative;
+}
+
+.menu-btn{
+font-size:28px;
+cursor:pointer;
+}
+
+.dropdown{
+position:absolute;
+right:0;
+top:40px;
+background:white;
+width:220px;
+display:none;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+.dropdown a,
+.dropdown select{
+width:100%;
+padding:12px;
+display:block;
+text-decoration:none;
+color:black;
+background:white;
+border:none;
+font-size:16px;
+}
+
+.dropdown a:hover{
+background:#eee;
+}
+
+.hero{
+height:450px;
+background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-content{
+background:rgba(0,0,0,0.6);
+padding:35px;
+border-radius:20px;
+}
+
+.hero-content h1{
+font-size:55px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-top:10px;
+}
+
+.section-title{
+text-align:center;
+padding:30px;
+font-size:35px;
+color:#222;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+transition:0.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.discount{
+position:absolute;
+top:10px;
+left:10px;
+background:red;
+color:white;
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+font-size:22px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+color:green;
+}
+
+.old-price{
+text-decoration:line-through;
+margin-left:8px;
+color:gray;
+}
+
+.btn-group{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.btn{
+flex:1;
+padding:11px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+color:white;
+cursor:pointer;
+}
+
+.cart-btn{
+background:#007bff;
+}
+
+.buy-btn{
+background:#28a745;
+}
+
+.wishlist-btn{
+background:#ff4081;
+}
+
+.about{
+margin:30px;
+padding:30px;
+background:white;
+border-radius:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111;
+color:white;
+display:flex;
+justify-content:space-around;
+padding:15px 0;
+z-index:999;
+}
+
+.footer-item{
+text-align:center;
+cursor:pointer;
+}
+
+.footer-item i{
+font-size:22px;
+}
+
+.popup{
+position:fixed;
+top:20px;
+right:20px;
+background:green;
+color:white;
+padding:15px 20px;
+border-radius:10px;
+display:none;
+z-index:99999;
+}
+
+@media(max-width:768px){
+.search-box{
+width:50%;
+}
+.hero-content h1{
+font-size:38px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+<div class="login-box">
+<h1>ARIZ SHOPE Login</h1>
+<input type="email" placeholder="Enter Email" id="email">
+<input type="password" placeholder="Enter Password" id="password">
+<button onclick="enterWebsite()">Enter Website</button>
+</div>
+</div>
+
+<header>
+<div class="logo">ARIZ SHOPE</div>
+
+<div class="search-box">
+<input type="text" placeholder="Search Products" id="search">
+</div>
+
+<div class="menu-container">
+<i class="fa-solid fa-ellipsis-vertical menu-btn" onclick="toggleMenu()"></i>
+
+<div class="dropdown" id="dropdownMenu">
+<a href="#">Settings</a>
+<a href="#about">About Us</a>
+<select onchange="changeLanguage()" id="languageSelect">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="fr">French</option>
+<option value="es">Spanish</option>
+<option value="de">German</option>
+</select>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1 id="mainTitle">Mega Shopping Discounts</h1>
+<p>Luxury Cars, Anime Posters, Fashion & Electronics</p>
+</div>
+</section>
+
+<h2 class="section-title">Trending Products</h2>
+
+<section class="products" id="productContainer"></section>
+
+<section class="about" id="about">
+<h2>About Us</h2>
+<br>
+<p>
+ARIZ SHOPE is a modern online shopping website with premium products, car posters, anime wall posters, fashion accessories, electronics and more.
+We provide high quality products with huge discounts and fast shopping experience.
+</p>
+</section>
+
+<div class="popup" id="popup"></div>
+
+<div id="cartModal" style="display:none; position:fixed; top:80px; right:20px; width:320px; max-height:400px; overflow:auto; background:white; padding:20px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.3); z-index:9999;">
+<h2 style="margin-bottom:15px;">🛒 Cart Items</h2>
+<div id="cartItems"></div>
+</div>
+
+<div id="wishlistModal" style="display:none; position:fixed; top:80px; left:20px; width:320px; max-height:400px; overflow:auto; background:white; padding:20px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.3); z-index:9999;">
+<h2 style="margin-bottom:15px;">❤ Wishlist Items</h2>
+<div id="wishlistItems"></div>
+</div>
+
+<footer>
+<div class="footer-item" onclick="toggleCart()">
+<i class="fa-solid fa-cart-shopping"></i>
+<p>Cart</p>
+</div>
+
+<div class="footer-item" onclick="toggleWishlist()">
+<i class="fa-solid fa-heart"></i>
+<p>Wishlist</p>
+</div>
+
+<div class="footer-item" onclick="showMessage('Orders Opened')">
+<i class="fa-solid fa-box"></i>
+<p>Orders</p>
+</div>
+</footer>
+
+<script>
+const products = [
+{
+name:'Luxury Sports Car',
+price:'$35,000',
+old:'$45,000',
+discount:'30% OFF',
+img:'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Premium Red Car',
+price:'$52,000',
+old:'$70,000',
+discount:'25% OFF',
+img:'https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Classic Black Car',
+price:'$44,000',
+old:'$58,000',
+discount:'20% OFF',
+img:'https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Anime Wall Poster',
+price:'$55',
+old:'$95',
+discount:'45% OFF',
+img:'https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Luxury Watch',
+price:'$450',
+old:'$650',
+discount:'40% OFF',
+img:'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Fashion Shoes',
+price:'$120',
+old:'$180',
+discount:'35% OFF',
+img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Smartphone',
+price:'$999',
+old:'$1299',
+discount:'22% OFF',
+img:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Gaming Laptop',
+price:'$1400',
+old:'$1800',
+discount:'28% OFF',
+img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Headphones',
+price:'$199',
+old:'$299',
+discount:'33% OFF',
+img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Designer Bag',
+price:'$280',
+old:'$400',
+discount:'30% OFF',
+img:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Smart TV',
+price:'$850',
+old:'$1100',
+discount:'18% OFF',
+img:'https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Luxury Sofa',
+price:'$650',
+old:'$900',
+discount:'27% OFF',
+img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Modern Chair',
+price:'$150',
+old:'$240',
+discount:'45% OFF',
+img:'https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'DSLR Camera',
+price:'$1100',
+old:'$1500',
+discount:'26% OFF',
+img:'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Bike Collection',
+price:'$750',
+old:'$980',
+discount:'20% OFF',
+img:'https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Smart Speaker',
+price:'$120',
+old:'$180',
+discount:'35% OFF',
+img:'https://images.unsplash.com/photo-1543512214-318c7553f230?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Fitness Watch',
+price:'$220',
+old:'$320',
+discount:'31% OFF',
+img:'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Fashion Jacket',
+price:'$170',
+old:'$250',
+discount:'29% OFF',
+img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Tablet',
+price:'$520',
+old:'$680',
+discount:'24% OFF',
+img:'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Sneakers',
+price:'$140',
+old:'$220',
+discount:'42% OFF',
+img:'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200&auto=format&fit=crop'
+},
+{
+name:'Car Wall Poster',
+price:'$70',
+old:'$120',
+discount:'50% OFF',
+img:'https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?q=80&w=1200&auto=format&fit=crop'
+}
+];
+
+const container = document.getElementById('productContainer');
+
+let cart = [];
+let wishlist = [];
+
+function loadProducts(items){
+container.innerHTML='';
+
+items.forEach(product=>{
+container.innerHTML += `
+<div class="card">
+<div class="discount">${product.discount}</div>
+<img src="${product.img}" alt="${product.name}">
+
+<div class="card-content">
+<h3>${product.name}</h3>
+<div>
+<span class="price">${product.price}</span>
+<span class="old-price">${product.old}</span>
+</div>
+
+<div class="btn-group">
+<button class="btn cart-btn" onclick="addToCart('${product.name}','${product.price}','${product.img}')">Cart</button>
+<button class="btn buy-btn" onclick="showMessage('Purchase Successful')">Buy</button>
+<button class="btn wishlist-btn" onclick="addToWishlist('${product.name}','${product.price}','${product.img}')">❤</button>
+</div>
+</div>
+</div>
+`;
+});
+}
+
+loadProducts(products);
+
+function toggleMenu(){
+const menu = document.getElementById('dropdownMenu');
+menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+function addToCart(name, price, img){
+cart.push({name,price,img});
+updateCartUI();
+showMessage(name + ' Added To Cart');
+}
+
+function addToWishlist(name, price, img){
+wishlist.push({name,price,img});
+updateWishlistUI();
+showMessage(name + ' Added To Wishlist');
+}
+
+function updateCartUI(){
+const cartItems = document.getElementById('cartItems');
+
+if(cart.length===0){
+cartItems.innerHTML = '<p>No Items In Cart</p>';
+return;
+}
+
+cartItems.innerHTML = '';
+
+cart.forEach(item=>{
+cartItems.innerHTML += `
+<div style="display:flex; gap:10px; margin-bottom:15px; align-items:center; border-bottom:1px solid #ddd; padding-bottom:10px;">
+<img src="${item.img}" width="70" height="70" style="object-fit:cover; border-radius:10px;">
+<div>
+<h4>${item.name}</h4>
+<p style="color:green; font-weight:bold;">${item.price}</p>
+</div>
+</div>
+`;
+});
+}
+
+function updateWishlistUI(){
+const wishlistItems = document.getElementById('wishlistItems');
+
+if(wishlist.length===0){
+wishlistItems.innerHTML = '<p>No Items In Wishlist</p>';
+return;
+}
+
+wishlistItems.innerHTML = '';
+
+wishlist.forEach(item=>{
+wishlistItems.innerHTML += `
+<div style="display:flex; gap:10px; margin-bottom:15px; align-items:center; border-bottom:1px solid #ddd; padding-bottom:10px;">
+<img src="${item.img}" width="70" height="70" style="object-fit:cover; border-radius:10px;">
+<div>
+<h4>${item.name}</h4>
+<p style="color:#ff4081; font-weight:bold;">${item.price}</p>
+</div>
+</div>
+`;
+});
+}
+
+function toggleCart(){
+const cartModal = document.getElementById('cartModal');
+cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleWishlist(){
+const wishlistModal = document.getElementById('wishlistModal');
+wishlistModal.style.display = wishlistModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function showMessage(text){
+const popup = document.getElementById('popup');
+popup.innerText = text;
+popup.style.display='block';
+
+setTimeout(()=>{
+popup.style.display='none';
+},2000);
+}
+
+function enterWebsite(){
+const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+
+if(email === '' || password === ''){
+showMessage('Please Fill Login Details');
+return;
+}
+
+document.getElementById('loginScreen').style.display='none';
+showMessage('Login Successful');
+}
+
+function changeLanguage(){
+const lang = document.getElementById('languageSelect').value;
+
+if(lang==='hi'){
+document.getElementById('mainTitle').innerText='बड़ी शॉपिंग सेल';
+}
+else if(lang==='fr'){
+document.getElementById('mainTitle').innerText='Grande Vente';
+}
+else if(lang==='es'){
+document.getElementById('mainTitle').innerText='Gran Venta';
+}
+else if(lang==='de'){
+document.getElementById('mainTitle').innerText='Großer Verkauf';
+}
+else{
+document.getElementById('mainTitle').innerText='Mega Shopping Discounts';
+}
+}
+
+const search = document.getElementById('search');
+
+search.addEventListener('keyup',()=>{
+const value = search.value.toLowerCase();
+
+const filtered = products.filter(product=>
+product.name.toLowerCase().includes(value)
+);
+
+loadProducts(filtered);
+});
+
+window.onclick = function(e){
+if(!e.target.matches('.menu-btn')){
+const dropdown = document.getElementById('dropdownMenu');
+if(dropdown.style.display==='block'){
+dropdown.style.display='none';
+}
+}
+}
+</script>
+
+</body>
+</html>
